@@ -1,0 +1,20 @@
+{
+  "name": "NEXIO - Institutional Bitcoin Credit",
+  "short_name": "NEXIO",
+  "description": "Fixed-rate Bitcoin credit infrastructure for institutional investors. Trusted custody, auditable yields.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A2342",
+  "theme_color": "#0A2342",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "business"],
+  "lang": "en"
+}

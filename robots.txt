@@ -1,0 +1,11 @@
+# NEXIO Robots.txt
+# https://nexio.xyz
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://nexio.xyz/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
