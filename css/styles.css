@@ -1,0 +1,199 @@
+/* NEXIO Custom Styles */
+
+/* CORE SETUP */
+:root {
+    --bg-color: #FFFFFF;
+    --text-color: #1A1A1A;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ACCESSIBILITY: Skip Link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #0A2342;
+    color: #C5A065;
+    padding: 8px;
+    z-index: 10000;
+    transition: top 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* BACKGROUND GRID */
+.grid-bg {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(10, 35, 66, 0.03) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(10, 35, 66, 0.03) 1px, transparent 1px);
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+}
+
+/* CUSTOM SCROLLBAR */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F5F7FA;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3E5C76;
+    border: 2px solid #F5F7FA;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0A2342;
+}
+
+/* UTILITIES */
+.reveal-text {
+    opacity: 0;
+    transform: translateY(20px);
+    will-change: opacity, transform;
+}
+
+.text-balance {
+    text-wrap: balance;
+}
+
+.sticky-section {
+    position: sticky;
+    top: 0;
+}
+
+/* CARD STYLES */
+.card-institutional {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.card-institutional:hover {
+    border-color: #0A2342;
+    box-shadow: 0 10px 30px -10px rgba(10, 35, 66, 0.1);
+}
+
+/* BUTTONS */
+.btn-tradfi {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    font-size: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-tradfi-primary {
+    background: #0A2342;
+    color: #FFFFFF;
+    border: 1px solid #0A2342;
+}
+
+.btn-tradfi-primary:hover {
+    background: #153258;
+    border-color: #153258;
+}
+
+.btn-tradfi-outline {
+    background: transparent;
+    color: #0A2342;
+    border: 1px solid #0A2342;
+}
+
+.btn-tradfi-outline:hover {
+    background: #F5F7FA;
+}
+
+/* CHART STYLES */
+.chart-bar {
+    width: 100%;
+}
+
+/* Hatch pattern for 2025 projection overlay */
+.pattern-diagonal {
+    background-color: #C5A065;
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.2),
+        rgba(255,255,255,0.2) 5px,
+        transparent 5px,
+        transparent 10px
+    );
+}
+
+/* LOADER */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: #0A2342;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-line {
+    width: 0%;
+    height: 1px;
+    background: #C5A065;
+    margin-top: 20px;
+}
+
+/* LENIS SMOOTH SCROLL */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+/* ACCESSIBILITY UTILITIES */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+:focus-visible {
+    outline: 2px solid #C5A065;
+    outline-offset: 2px;
+}

@@ -1,0 +1,15 @@
+{
+  "name": "nexio-website",
+  "version": "1.0.0",
+  "description": "NEXIO - Institutional Bitcoin Credit Infrastructure",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/input.css -o ./css/tailwind.css --watch",
+    "build": "npx tailwindcss -i ./src/input.css -o ./css/tailwind.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

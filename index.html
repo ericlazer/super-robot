@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <!-- SEO & META -->
+    <title>NEXIO | Institutional Capital Infrastructure</title>
+    <meta name="description" content="Nexio Institutional - Fixed-rate Bitcoin credit and yield curve infrastructure. Trusted custody, auditable yields.">
+    <meta name="keywords" content="Bitcoin, Institutional Credit, Yield, Fintech, Crypto Infrastructure">
+    <meta name="theme-color" content="#0A2342">
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="NEXIO | Institutional Capital">
+    <meta property="og:description" content="The infrastructure for fixed-rate Bitcoin credit.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nexio.xyz">
+    <meta property="og:image" content="https://nexio.xyz/og-card.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="selection:bg-brand-navy selection:text-white bg-white">
+
+    <!-- A11Y SKIP LINK -->
+    <a href="#main-content" class="skip-link font-sans text-xs font-bold">Skip to Main Content</a>
+
+    <!-- BACKGROUND GRID -->
+    <div class="grid-bg"></div>
+
+    <!-- LOADER -->
+    <div id="loader" aria-hidden="true">
+        <span class="font-serif text-white text-2xl tracking-widest">NEXIO</span>
+        <div class="w-32 h-px bg-white/20 mt-4 relative overflow-hidden">
+            <div id="loader-progress" class="absolute left-0 top-0 h-full bg-brand-gold w-0"></div>
+        </div>
+        <span class="font-sans font-medium text-brand-gold text-[10px] tracking-[0.2em] uppercase mt-4">System Initializing</span>
+    </div>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="mobile-menu" class="fixed inset-0 bg-brand-navy z-[9000] translate-x-[100%] flex flex-col justify-center items-center gap-8 will-change-transform transition-transform duration-500 ease-out" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+        <a href="#market" class="font-serif text-4xl text-white hover:text-brand-gold transition-colors" onclick="closeMenu()">Market</a>
+        <a href="#data" class="font-serif text-4xl text-white hover:text-brand-gold transition-colors" onclick="closeMenu()">Data</a>
+        <a href="#protocol" class="font-serif text-4xl text-white hover:text-brand-gold transition-colors" onclick="closeMenu()">Protocol</a>
+        <button class="mt-8 btn-tradfi btn-tradfi-outline border-white text-white hover:bg-white hover:text-brand-navy px-8 py-3">
+            Launch App
+        </button>
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 p-4 text-white hover:text-brand-gold transition-colors" aria-label="Close Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+
+    <!-- NAV -->
+    <nav class="fixed top-0 w-full z-[100] bg-white border-b border-brand-navy/10 transition-all duration-300" id="navbar">
+        <div class="hidden md:flex justify-end items-center bg-brand-navy px-12 py-2 gap-6 text-[10px] uppercase tracking-widest text-white/80 font-sans border-b border-white/10">
+            <span class="opacity-60">Institutional Clients</span>
+            <a href="#" class="hover:text-white transition-colors">Client Login</a>
+            <a href="#" class="hover:text-white transition-colors">Contact</a>
+        </div>
+
+        <div class="px-6 md:px-12 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-4 group cursor-pointer" onclick="smoothScroll(event, 'body')" aria-label="Nexio Home">
+                <div class="w-8 h-8 bg-brand-navy flex items-center justify-center text-brand-gold">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="2" width="20" height="20" stroke="currentColor" stroke-width="2"/>
+                        <path d="M2 22L22 2" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <span class="font-serif font-bold text-2xl tracking-wide text-brand-navy">NEXIO</span>
+            </a>
+
+            <div class="hidden md:flex gap-8 font-sans font-medium text-xs uppercase tracking-widest text-brand-navy/80">
+                <a href="#market" onclick="smoothScroll(event, '#market')" class="hover:text-brand-navy transition-colors relative group py-2">
+                    Market
+                    <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#data" onclick="smoothScroll(event, '#data')" class="hover:text-brand-navy transition-colors relative group py-2">
+                    Context
+                    <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#protocol" onclick="smoothScroll(event, '#protocol')" class="hover:text-brand-navy transition-colors relative group py-2">
+                    Protocol
+                    <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="https://docs.nexio.xyz/01-Overview/1.what-is-nexio" target="_blank" rel="noopener noreferrer" class="hover:text-brand-navy transition-colors relative group py-2">
+                    Docs
+                    <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </div>
+
+            <div class="hidden md:flex items-center gap-6">
+                <span class="font-mono text-[10px] text-brand-slate uppercase tracking-widest">v1.2 Institutional</span>
+                <button class="btn-tradfi btn-tradfi-primary px-6 py-3">
+                    Launch App
+                </button>
+            </div>
+
+            <button class="md:hidden space-y-1.5 cursor-pointer p-2" onclick="toggleMenu()" aria-label="Toggle Menu">
+                <div class="w-6 h-0.5 bg-brand-navy"></div>
+                <div class="w-6 h-0.5 bg-brand-navy"></div>
+                <div class="w-6 h-0.5 bg-brand-navy"></div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content" class="pt-[110px]">
+        <div id="smooth-wrapper">
+            <div id="smooth-content">
+
+                <!-- HERO SECTION -->
+                <section class="min-h-[90vh] flex flex-col justify-center px-6 md:px-12 relative border-b border-brand-navy/10">
+                    <div class="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                        <!-- Text Content -->
+                        <div class="lg:col-span-8 z-10">
+                            <div class="flex flex-col gap-2 mb-8 reveal-text">
+                                <span class="font-sans font-bold text-xs uppercase tracking-[0.2em] text-brand-gold">Infrastructure for Capital</span>
+                            </div>
+
+                            <h1 class="font-serif text-hero font-medium leading-[1.1] text-brand-navy tracking-tight mb-8">
+                                <span class="block reveal-text">Institutional</span>
+                                <span class="block reveal-text italic text-brand-slate">Bitcoin</span>
+                                <span class="block reveal-text">Credit</span>
+                            </h1>
+
+                            <div class="max-w-xl reveal-text border-l-2 border-brand-gold pl-6 py-2">
+                                <p class="font-sans text-lg text-brand-charcoal/80 leading-relaxed text-balance">
+                                    Fixed-rate Bitcoin credit infrastructure. Borrowers lock in BTC funding costs. Lenders earn auditable yields.
+                                </p>
+                            </div>
+
+                            <div class="mt-12 flex gap-6 reveal-text">
+                                <button class="btn-tradfi btn-tradfi-primary px-8 py-4 text-sm">
+                                    Start Integration
+                                </button>
+                                <a href="https://docs.nexio.xyz/01-Overview/1.what-is-nexio" target="_blank" rel="noopener noreferrer" class="btn-tradfi btn-tradfi-outline px-8 py-4 text-sm flex items-center justify-center">
+                                    View Documentation
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Abstract Visual -->
+                        <div class="lg:col-span-4 h-[400px] relative hidden lg:block opacity-50">
+                            <div class="absolute inset-0 border border-brand-navy/20"></div>
+                            <div class="absolute top-10 left-10 right-0 bottom-0 border border-brand-navy/20"></div>
+                            <div class="absolute top-20 left-20 right-0 bottom-0 border border-brand-navy/20 bg-brand-grey"></div>
+                            <div class="absolute top-[30%] left-[30%] w-32 h-32 bg-brand-gold/10 backdrop-blur-sm border border-brand-gold/30"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- THESIS -->
+                <section id="market" class="py-32 px-6 md:px-12 bg-brand-grey border-b border-brand-navy/10">
+                    <div class="max-w-[1400px] mx-auto">
+                        <div class="mb-24 flex flex-col md:flex-row justify-between items-end border-b border-brand-navy/10 pb-12">
+                            <h2 class="font-serif text-5xl md:text-6xl text-brand-navy">Unlock Capital</h2>
+                            <div class="flex items-center gap-4 mt-6 md:mt-0">
+                                <div class="h-px w-12 bg-brand-navy"></div>
+                                <span class="font-sans text-xs font-bold uppercase text-brand-navy tracking-widest">01 — Thesis</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                            <!-- Card 1 -->
+                            <div class="card-institutional p-12 flex flex-col justify-between min-h-[400px] group">
+                                <div>
+                                    <div class="flex justify-between items-start mb-12">
+                                        <span class="font-sans font-bold text-brand-gold text-[10px] uppercase tracking-widest">The Problem</span>
+                                        <span class="font-serif text-4xl text-brand-slate/20 group-hover:text-brand-navy transition-colors">01</span>
+                                    </div>
+                                    <h3 class="font-serif text-3xl text-brand-navy mb-6">Capital Inefficiency</h3>
+                                </div>
+                                <div>
+                                    <div class="w-8 h-px bg-brand-navy/20 mb-6"></div>
+                                    <p class="font-sans text-sm text-brand-charcoal/70 leading-relaxed">
+                                        Bitcoin is pristine collateral, but without a fixed-rate credit layer, most BTC sits idle. Variable rates and opaque risk keep institutions on the sidelines.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="card-institutional p-12 flex flex-col justify-between min-h-[400px] group bg-brand-navy text-white">
+                                <div>
+                                    <div class="flex justify-between items-start mb-12">
+                                        <span class="font-sans font-bold text-brand-gold text-[10px] uppercase tracking-widest">The Architecture</span>
+                                        <span class="font-serif text-4xl text-white/20 group-hover:text-white transition-colors">02</span>
+                                    </div>
+                                    <h3 class="font-serif text-3xl text-white mb-6">Isolated Risk</h3>
+                                </div>
+                                <div>
+                                    <div class="w-8 h-px bg-white/20 mb-6"></div>
+                                    <p class="font-sans text-sm text-white/70 leading-relaxed">
+                                        Borrower-dedicated vaults ring-fence risk. Terms and exposures are visible at the series level, so lenders always know exactly what they own.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="card-institutional p-12 flex flex-col justify-between min-h-[400px] group">
+                                <div>
+                                    <div class="flex justify-between items-start mb-12">
+                                        <span class="font-sans font-bold text-brand-gold text-[10px] uppercase tracking-widest">The Outcome</span>
+                                        <span class="font-serif text-4xl text-brand-slate/20 group-hover:text-brand-navy transition-colors">03</span>
+                                    </div>
+                                    <h3 class="font-serif text-3xl text-brand-navy mb-6">Fixed Rates</h3>
+                                </div>
+                                <div>
+                                    <div class="w-8 h-px bg-brand-navy/20 mb-6"></div>
+                                    <p class="font-sans text-sm text-brand-charcoal/70 leading-relaxed">
+                                        Rates are fixed at draw and held to maturity. Borrowers can budget BTC funding. Lenders earn predictable, auditable coupons.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- STRIP -->
+                <div class="bg-brand-navy text-white py-12 border-y border-brand-navy relative z-40">
+                    <div class="max-w-[1400px] mx-auto px-6 md:px-12 flex flex-wrap justify-between gap-8 items-center font-sans text-xs uppercase tracking-[0.15em]">
+                        <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 bg-brand-gold"></div><span>Institutional Grade</span></div>
+                        <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 bg-brand-gold"></div><span>Zero Rehypothecation</span></div>
+                        <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 bg-brand-gold"></div><span>24/7 Settlement</span></div>
+                        <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 bg-brand-gold"></div><span>Pristine Collateral</span></div>
+                    </div>
+                </div>
+
+                <!-- DATA CONTEXT & CHART -->
+                <section id="data" class="py-32 px-6 md:px-12 bg-white relative z-50">
+                    <div class="max-w-[1400px] mx-auto">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+
+                            <!-- Context Text -->
+                            <div class="lg:col-span-4">
+                                <span class="font-sans text-xs font-bold uppercase tracking-widest text-brand-gold mb-6 block">Market Context</span>
+                                <h2 class="font-serif text-4xl md:text-5xl text-brand-navy mb-8 leading-tight">
+                                    The Capital Rotation is Here.
+                                </h2>
+                                <div class="w-12 h-px bg-brand-navy mb-8"></div>
+                                <p class="font-sans text-brand-charcoal/80 leading-relaxed mb-8">
+                                    The era of Bitcoin as purely a "speculative bet" is over. We are witnessing a structural shift toward <span class="font-semibold text-brand-navy">Productive Bitcoin</span>.
+                                </p>
+                                <p class="font-sans text-sm text-brand-charcoal/60 leading-relaxed">
+                                    Public and private treasuries are shifting from simple accumulation to income generation. As holdings grow, the fiduciary duty to earn yield becomes undeniable.
+                                </p>
+                            </div>
+
+                            <!-- Chart -->
+                            <div class="lg:col-span-8">
+                                <div class="card-institutional p-8 md:p-12 shadow-md">
+                                    <!-- Header -->
+                                    <div class="flex justify-between items-end mb-16 border-b border-brand-border pb-6">
+                                        <div>
+                                            <h3 class="font-serif text-2xl text-brand-navy">Corporate Bitcoin Holdings</h3>
+                                            <p class="font-sans text-[10px] text-brand-charcoal/50 mt-2 uppercase tracking-widest">Global Treasuries & ETFs (YoY)</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <span class="block font-serif text-3xl text-brand-navy">1.02M BTC</span>
+                                            <div class="flex items-center justify-end gap-2 mt-1">
+                                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#0F6D43" stroke-width="3"><path d="M12 20V4M12 4L4 12M12 4L20 12"/></svg>
+                                                <span class="font-sans text-[10px] font-bold text-[#0F6D43] uppercase tracking-wider">20.87% Growth</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Chart Container -->
+                                    <div class="flex gap-6 h-[350px] w-full">
+                                        <!-- Y Axis -->
+                                        <div class="flex flex-col justify-between items-end h-full text-[10px] text-brand-charcoal/40 font-mono font-medium w-8 shrink-0 pb-1">
+                                            <span>1.2M</span><span>1.0M</span><span>0.8M</span><span>0.6M</span><span>0.4M</span><span>0.2M</span><span>0.0</span>
+                                        </div>
+
+                                        <!-- Plot Area -->
+                                        <div class="flex-1 flex flex-col justify-end relative h-full">
+                                            <!-- Grid Lines -->
+                                            <div class="absolute inset-0 w-full h-full flex flex-col justify-between pointer-events-none z-0">
+                                                <div class="w-full h-px border-t border-dashed border-brand-border"></div>
+                                                <div class="w-full h-px border-t border-dashed border-brand-border"></div>
+                                                <div class="w-full h-px border-t border-dashed border-brand-border"></div>
+                                                <div class="w-full h-px border-t border-dashed border-brand-border"></div>
+                                                <div class="w-full h-px border-t border-dashed border-brand-border"></div>
+                                                <div class="w-full h-px border-t border-dashed border-brand-border"></div>
+                                                <!-- The 0 line -->
+                                                <div class="w-full h-[1px] bg-brand-navy"></div>
+                                            </div>
+
+                                            <!-- Bars Row -->
+                                            <div class="relative z-10 w-full h-full flex items-end justify-between px-2 md:px-4">
+                                                <!-- 2020 -->
+                                                <div class="w-full mx-1 md:mx-2 flex flex-col items-center justify-end h-full group">
+                                                    <div class="w-full max-w-[50px] bg-brand-slate h-[4%] relative">
+                                                        <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-brand-charcoal text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity rounded-sm">50k</div>
+                                                    </div>
+                                                </div>
+                                                <!-- 2021 -->
+                                                <div class="w-full mx-1 md:mx-2 flex flex-col items-center justify-end h-full group">
+                                                    <div class="w-full max-w-[50px] bg-brand-slate h-[33%] relative">
+                                                        <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-brand-charcoal text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity rounded-sm">400k</div>
+                                                    </div>
+                                                </div>
+                                                <!-- 2022 -->
+                                                <div class="w-full mx-1 md:mx-2 flex flex-col items-center justify-end h-full group">
+                                                    <div class="w-full max-w-[50px] bg-brand-slate h-[37%] relative">
+                                                        <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-brand-charcoal text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity rounded-sm">450k</div>
+                                                    </div>
+                                                </div>
+                                                <!-- 2023 -->
+                                                <div class="w-full mx-1 md:mx-2 flex flex-col items-center justify-end h-full group">
+                                                    <div class="w-full max-w-[50px] bg-brand-slate h-[45%] relative">
+                                                        <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-brand-charcoal text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity rounded-sm">550k</div>
+                                                    </div>
+                                                </div>
+                                                <!-- 2024 -->
+                                                <div class="w-full mx-1 md:mx-2 flex flex-col items-center justify-end h-full group">
+                                                    <div class="w-full max-w-[50px] bg-brand-navy h-[70%] relative shadow-md">
+                                                        <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-brand-navy text-white text-[10px] px-2 py-1 whitespace-nowrap shadow-sm border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity">ETF Launch</div>
+                                                    </div>
+                                                </div>
+                                                <!-- 2025 -->
+                                                <div class="w-full mx-1 md:mx-2 flex flex-col items-center justify-end h-full group">
+                                                    <div class="w-full max-w-[50px] bg-brand-gold pattern-diagonal h-[85%] relative border-t-2 border-brand-gold">
+                                                        <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-brand-gold text-brand-navy text-[10px] font-bold px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity rounded-sm">1.02M</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- X-Axis Labels -->
+                                    <div class="flex gap-6 mt-4 w-full pl-8">
+                                        <div class="flex-1 flex justify-between px-2 md:px-4 text-[10px] font-bold text-brand-charcoal/40 font-mono text-center">
+                                            <span class="w-full mx-1 md:mx-2 max-w-[50px]">2020</span>
+                                            <span class="w-full mx-1 md:mx-2 max-w-[50px]">2021</span>
+                                            <span class="w-full mx-1 md:mx-2 max-w-[50px]">2022</span>
+                                            <span class="w-full mx-1 md:mx-2 max-w-[50px]">2023</span>
+                                            <span class="w-full mx-1 md:mx-2 max-w-[50px] text-brand-navy">2024</span>
+                                            <span class="w-full mx-1 md:mx-2 max-w-[50px] text-brand-gold">2025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PROTOCOL SECTION -->
+                <section id="protocol" class="py-32 px-6 md:px-12 bg-brand-grey border-t border-brand-border">
+                    <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-24">
+
+                        <!-- Sticky Left -->
+                        <div class="sticky top-32 h-fit">
+                            <div class="flex items-center gap-4 mb-8">
+                                <div class="h-px w-12 bg-brand-navy"></div>
+                                <span class="font-sans text-xs font-bold uppercase text-brand-navy tracking-widest">02 — Protocol</span>
+                            </div>
+                            <h2 class="font-serif text-5xl md:text-6xl text-brand-navy mb-8 leading-tight">
+                                How It<br>Works
+                            </h2>
+                            <p class="font-sans text-brand-charcoal/80 leading-relaxed max-w-md mb-12">
+                                Institutional custody meets on-chain transparency. Every flow is verifiable.
+                            </p>
+                            <button class="btn-tradfi btn-tradfi-primary px-8 py-4">
+                                Read Documentation
+                            </button>
+                        </div>
+
+                        <!-- Right Steps (Vertical Timeline) -->
+                        <div class="flex flex-col relative border-l border-brand-border pl-12 space-y-16">
+
+                            <!-- Step 1 -->
+                            <div class="relative group">
+                                <div class="absolute -left-[55px] top-0 w-3 h-3 bg-white border-2 border-brand-navy rounded-full group-hover:bg-brand-gold transition-colors"></div>
+                                <span class="font-sans text-[10px] font-bold text-brand-charcoal/40 uppercase tracking-widest mb-2 block">Step 01</span>
+                                <h3 class="font-serif text-2xl text-brand-navy mb-4">Lend BTC</h3>
+                                <p class="font-sans text-sm text-brand-charcoal/70 leading-relaxed max-w-md">
+                                    Deposit BTC and choose a borrower series (or enable auto-routing). Capital is deployed only under signed terms and series-level risk limits.
+                                </p>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="relative group">
+                                <div class="absolute -left-[55px] top-0 w-3 h-3 bg-white border-2 border-brand-navy rounded-full group-hover:bg-brand-gold transition-colors"></div>
+                                <span class="font-sans text-[10px] font-bold text-brand-charcoal/40 uppercase tracking-widest mb-2 block">Step 02</span>
+                                <h3 class="font-serif text-2xl text-brand-navy mb-4">Price the Term</h3>
+                                <p class="font-sans text-sm text-brand-charcoal/70 leading-relaxed max-w-md">
+                                    Nexio publishes a BTC benchmark rate + borrower credit spread. Coupon and tenor are locked at draw.
+                                </p>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="relative group">
+                                <div class="absolute -left-[55px] top-0 w-3 h-3 bg-white border-2 border-brand-navy rounded-full group-hover:bg-brand-gold transition-colors"></div>
+                                <span class="font-sans text-[10px] font-bold text-brand-charcoal/40 uppercase tracking-widest mb-2 block">Step 03</span>
+                                <h3 class="font-serif text-2xl text-brand-navy mb-4">Qualified Custody</h3>
+                                <p class="font-sans text-sm text-brand-charcoal/70 leading-relaxed max-w-md">
+                                    Custody-grade controls with multi-party approvals, MPC, and offline key management. Series exposure stays isolated and verifiable.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FOOTER -->
+                <footer class="bg-brand-navy text-white pt-24 pb-12 px-6 md:px-12 border-t border-brand-navy">
+                    <div class="max-w-[1400px] mx-auto">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-24">
+
+                            <div class="md:col-span-4">
+                                <h2 class="font-serif text-3xl mb-8">NEXIO</h2>
+                                <p class="font-sans text-sm text-white/60 max-w-xs mb-8">
+                                    Lend, borrow, or integrate Nexio into your platform.
+                                </p>
+                                <button class="btn-tradfi bg-brand-gold text-brand-navy border-brand-gold hover:bg-white px-8 py-3">
+                                    Request Access
+                                </button>
+                            </div>
+
+                            <div class="md:col-span-2">
+                                <span class="font-sans text-[10px] font-bold uppercase tracking-widest text-brand-gold mb-6 block">Platform</span>
+                                <ul class="space-y-4 font-sans text-sm text-white/80">
+                                    <li><a href="#" class="hover:text-white transition-colors">Borrow</a></li>
+                                    <li><a href="#" class="hover:text-white transition-colors">Lend</a></li>
+                                    <li><a href="#" class="hover:text-white transition-colors">Markets</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="md:col-span-2">
+                                <span class="font-sans text-[10px] font-bold uppercase tracking-widest text-brand-gold mb-6 block">Legal</span>
+                                <ul class="space-y-4 font-sans text-sm text-white/80">
+                                    <li><a href="#" class="hover:text-white transition-colors">Terms</a></li>
+                                    <li><a href="#" class="hover:text-white transition-colors">Privacy</a></li>
+                                    <li><a href="#" class="hover:text-white transition-colors">Risks</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="md:col-span-4 bg-brand-navy/50 p-6 border border-white/5 rounded-sm">
+                                <p class="font-sans text-[10px] text-white/40 leading-relaxed text-justify">
+                                    © 2025 Nexio. All rights reserved. This website is intended for institutional and qualified investors only. Not available in all jurisdictions. Past performance is not indicative of future results. Digital asset investments involve significant risk.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-white/10 pt-8 flex justify-between items-center">
+                            <span class="font-sans text-[10px] text-white/30 uppercase tracking-widest">Global Infrastructure</span>
+                            <div class="flex gap-2">
+                                <div class="w-1.5 h-1.5 bg-brand-gold"></div>
+                                <div class="w-1.5 h-1.5 bg-white/20"></div>
+                                <div class="w-1.5 h-1.5 bg-white/20"></div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
