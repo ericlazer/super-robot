@@ -79,10 +79,14 @@ body {
 
 /* CARD STYLES */
 .card-institutional {
-    background: #FFFFFF;
     border: 1px solid #E5E7EB;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
+}
+
+/* Default white background, can be overridden by Tailwind bg-* classes */
+.card-institutional:not(.bg-brand-navy) {
+    background: #FFFFFF;
 }
 
 .card-institutional:hover {
